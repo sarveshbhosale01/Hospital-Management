@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.signup-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 60px;
+  background-color: #fff;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #0b56f0;
+  display: flex;
+  align-items: center;
+}
+
+.signup-content {
+  width: 100%;
+  max-width: 380px;
+}
+
+.journey-text {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.signup-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 25px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.input-box input:focus {
+  border-color: #0b56f0;
+}
+
+.icon, .eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  cursor: pointer;
+}
+
+.signup-btn {
+  background-color: #0b56f0;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #0844c7;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #999;
+  font-size: 13px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.social-btn {
+  border: 1px solid #cfd8dc;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  background-color: #f3f5f7;
+}
+
+.signin-text {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+.signin-text a {
+  color: #0b56f0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+}
+
+.signup-right {
+  flex: 1;
+  overflow: hidden;
+}
+
+.signup-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
