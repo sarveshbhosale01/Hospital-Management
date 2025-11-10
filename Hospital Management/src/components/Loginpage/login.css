@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 html, body {
@@ -17,7 +17,6 @@ html, body {
   display: flex;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
 }
 
 /* ---------- Left Section ---------- */
@@ -39,13 +38,23 @@ html, body {
   font-weight: 600;
   font-size: 18px;
   color: #0b56f0;
-  display: flex;
-  align-items: center;
 }
 
 .signup-content {
   width: 100%;
   max-width: 380px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .journey-text {
@@ -84,11 +93,12 @@ html, body {
   border-radius: 6px;
   font-size: 14px;
   outline: none;
-  transition: border 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .input-box input:focus {
   border-color: #0b56f0;
+  box-shadow: 0 0 6px rgba(11, 86, 240, 0.2);
 }
 
 .icon {
@@ -97,7 +107,7 @@ html, body {
   top: 50%;
   transform: translateY(-50%);
   color: #999;
-  cursor: pointer;
+  pointer-events: none;
 }
 
 .signup-btn {
@@ -109,11 +119,12 @@ html, body {
   font-size: 15px;
   cursor: pointer;
   margin-top: 5px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .signup-btn:hover {
   background-color: #0844c7;
+  transform: translateY(-1px);
 }
 
 .divider {
@@ -160,6 +171,7 @@ html, body {
 
 .social-btn:hover {
   background-color: #f3f5f7;
+  transform: scale(1.05);
 }
 
 .signin-text {
@@ -172,32 +184,35 @@ html, body {
   color: #0b56f0;
   cursor: pointer;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
 .signin-text .link-text:hover {
+  color: #0844c7;
   text-decoration: underline;
 }
 
 /* ---------- Right Section ---------- */
 .signup-right {
   flex: 1;
-  background-color: #f5f7fa;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background-color: #f5f7fa;
 }
 
 .signup-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-left: 2px solid #eee;
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .signup-container {
     flex-direction: column;
+    overflow-y: auto;
   }
 
   .signup-right {

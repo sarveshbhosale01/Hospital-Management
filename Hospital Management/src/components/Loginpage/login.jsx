@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import "./login.css";
-import { FaEnvelope, FaFacebookF, FaGoogle, FaApple, FaLock } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaFacebookF,
+  FaGoogle,
+  FaApple,
+  FaLock,
+} from "react-icons/fa";
+import hospitalImg from "../../assets/hospital management.png"; // ✅ Correct import
 
 const Login = () => {
   const [isSignup, setIsSignup] = useState(true);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent form refresh
+  };
 
   return (
     <div className="signup-container">
@@ -21,7 +32,7 @@ const Login = () => {
           </h2>
 
           {/* Form */}
-          <form className="signup-form">
+          <form className="signup-form" onSubmit={handleSubmit}>
             <label className="form-label">E-mail</label>
             <div className="input-box">
               <input type="email" placeholder="example@email.com" required />
@@ -34,7 +45,6 @@ const Login = () => {
               <FaLock className="icon" />
             </div>
 
-            {/* Confirm Password (Only for Signup) */}
             {isSignup && (
               <>
                 <label className="form-label">Confirm Password</label>
@@ -50,43 +60,34 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="divider">
             {isSignup ? "or sign up with" : "or sign in with"}
           </div>
 
-          {/* Social Buttons */}
           <div className="social-login">
-            <button className="social-btn fb">
+            <button className="social-btn fb" aria-label="Sign in with Facebook">
               <FaFacebookF />
             </button>
-            <button className="social-btn google">
+            <button className="social-btn google" aria-label="Sign in with Google">
               <FaGoogle />
             </button>
-            <button className="social-btn apple">
+            <button className="social-btn apple" aria-label="Sign in with Apple">
               <FaApple />
             </button>
           </div>
 
-          {/* Toggle between Sign In & Sign Up */}
           <p className="signin-text">
             {isSignup ? (
               <>
                 Have an account?{" "}
-                <span
-                  className="link-text"
-                  onClick={() => setIsSignup(false)}
-                >
+                <span className="link-text" onClick={() => setIsSignup(false)}>
                   Sign In
                 </span>
               </>
             ) : (
               <>
                 Don’t have an account?{" "}
-                <span
-                  className="link-text"
-                  onClick={() => setIsSignup(true)}
-                >
+                <span className="link-text" onClick={() => setIsSignup(true)}>
                   Sign Up
                 </span>
               </>
@@ -95,13 +96,9 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right Section - Background */}
+      {/* Right Section */}
       <div className="signup-right">
-        <img
-          src="src/assets/hospital management.png"
-          alt="Background"
-          className="signup-bg"
-        />
+        <img src={hospitalImg} alt="Hospital Background" className="signup-bg" />
       </div>
     </div>
   );
