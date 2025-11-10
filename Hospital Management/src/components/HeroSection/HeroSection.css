@@ -1,0 +1,608 @@
+.hero-section {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  will-change: transform, opacity;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.slide.prev {
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.slide.next {
+  opacity: 0;
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.slide-content {
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+  position: relative;
+  animation: slideUp 1s ease-out 0.3s both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.slide-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  width: 100%;
+}
+
+.slide-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+  line-height: 1.6;
+  max-width: 600px;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeIn 1s ease-out 0.6s both;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cta-button {
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button.primary {
+  background: var(--button-color, #fff);
+  color: #333;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  backdrop-filter: blur(10px);
+}
+
+.cta-button.secondary:hover {
+  background: #fff;
+  color: #333;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Arrows */
+.slide-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-nav {
+  left: 2rem;
+}
+
+.next-nav {
+  right: 2rem;
+}
+
+/* Slide Indicators */
+.slide-indicators {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+}
+
+.indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.indicator.active {
+  border-color: white;
+  transform: scale(1.2);
+}
+
+.indicator.active::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.indicator:hover {
+  border-color: white;
+  transform: scale(1.1);
+}
+
+/* Progress Bar */
+.progress-container {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  animation: progress 5s linear infinite;
+  transform-origin: left;
+}
+
+@keyframes progress {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  z-index: 5;
+  animation: pulse 2s infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  transform: rotate(45deg);
+  margin: 0 auto 0.5rem;
+  animation: bounceArrow 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(-5px);
+  }
+  60% {
+    transform: rotate(45deg) translateY(-3px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Center alignment for all content */
+.hero-section * {
+  box-sizing: border-box;
+}
+
+.hero-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Ensure all text elements are centered */
+.slide-content h1,
+.slide-content p,
+.slide-content div {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Button container centering */
+.hero-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 100vh;
+    padding: 0;
+  }
+  
+  .slide-content {
+    padding: 0 20px;
+    max-width: 90%;
+  }
+  
+  .slide-title {
+    font-size: 2.2rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .slide-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .slide-icon {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .cta-button {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .slide-nav {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .prev-nav {
+    left: 1rem;
+  }
+  
+  .next-nav {
+    right: 1rem;
+  }
+  
+  .progress-container {
+    width: 150px;
+  }
+  
+  .slide-indicators {
+    bottom: 5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .slide-subtitle {
+    font-size: 1rem;
+    text-align: center;
+    max-width: 300px;
+  }
+  
+  .slide-content {
+    padding: 0 15px;
+  }
+  
+  .cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    width: 180px;
+  }
+  
+  .hero-buttons {
+    gap: 0.8rem;
+  }
+  
+  .slide-indicators {
+    bottom: 4rem;
+  }
+  
+  .progress-container {
+    bottom: 3rem;
+  }
+  
+  .scroll-indicator {
+    bottom: 0.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .slide-title {
+    font-size: 1.6rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    width: 160px;
+  }
+  
+  .slide-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* Ensure perfect centering on all screen sizes */
+@media (min-width: 1200px) {
+  .slide-content {
+    max-width: 1000px;
+  }
+  
+  .slide-title {
+    font-size: 4rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1.5rem;
+    max-width: 700px;
+  }
+}
+
+/* Fix for very tall screens */
+@media (min-height: 1000px) {
+  .hero-section {
+    height: 100vh;
+    min-height: 800px;
+  }
+  
+  .slide-content {
+    transform: translateY(-5%);
+  }
+}
+
+/* Fix for very short screens */
+@media (max-height: 600px) {
+  .hero-section {
+    height: 100vh;
+    min-height: 500px;
+  }
+  
+  .slide-content {
+    transform: scale(0.9);
+  }
+  
+  .slide-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .slide-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .slide-indicators {
+    bottom: 3rem;
+  }
+  
+  .progress-container {
+    bottom: 2rem;
+  }
+  
+  .scroll-indicator {
+    display: none;
+  }
+}
